@@ -121,3 +121,157 @@ function myReplace(str, before, after) {
 }
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+// DNA Pairing
+// The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
+// Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+// Return the provided character as the first element in each array.
+// For example, for the input GCG, return [["G", "C"], ["C","G"],["G", "C"]]
+// The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
+
+function pairElement(str) {
+  let obj = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C"
+  };
+  let arr = str.split("");
+  return arr.map(item => [item, obj[item]]);
+}
+
+pairElement("GCG");
+
+// Missing letters
+// Find the missing letter in the passed letter range and return it.
+// If all letters are present in the range, return undefined.
+
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let arrAbc = alphabet.split("");
+  let startingLetter = arrAbc.indexOf(str[0]);
+  arrAbc = arrAbc.slice(startingLetter);
+  let missing = "";
+  for (let i = 0; i < arrAbc.length; i++) {
+    if (str.indexOf(arrAbc[i]) === -1) {
+      missing += arrAbc[i];
+    }
+  }
+  return missing[0];
+}
+
+fearNotLetter("abce");
+
+// Sorted Union
+// Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+// In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+// The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+
+function uniteUnique(...arr) {
+  let allConcat = [].concat(...arr);
+  let newArr = Array.from(new Set(allConcat));
+  return newArr;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+// Convert HTML Entities
+// Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+
+function convertHTML(str) {
+  str = str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/'/g, "&apos;")
+    .replace(/"/g, "&quot;");
+  return str;
+}
+
+convertHTML("Dolce & Gabbana");
+
+// Sum All Odd Fibonacci Numbers
+// Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+// The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+// For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+
+function sumFibs(num) {
+  let a = 1;
+  let b = 1;
+  let sum = 2;
+
+  let x = a + b;
+  while (x <= num) {
+    if (x % 2 !== 0 && x <= num) {
+      sum += x;
+    }
+    a = b;
+    b = x;
+    x = a + b;
+  }
+
+  return sum;
+}
+
+sumFibs(4);
+
+// Sum All Primes
+// Sum all the prime numbers up to and including the provided number.
+// A prime number is defined as a number greater than one and having only two divisors, one and itself. For example, 2 is a prime number because it's only divisible by one and two.
+// The provided number may not be a prime.
+
+function sumPrimes(num) {
+  let primes = [];
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    let check = true;
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        check = false;
+      }
+    }
+    sum += check ? i : 0;
+  }
+  return sum;
+}
+
+sumPrimes(10);
+
+// Smallest Common Multiple
+// Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+// The range will be an array of two numbers that will not necessarily be in numerical order.
+// For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
+
+function smallestCommons(arr) {
+  arr.sort(function(a, b) {
+    return a - b;
+  });
+  let max = arr[arr.length - 1];
+  let min = arr[0];
+  let m = max;
+
+  for (let i = max; i >= min; i--) {
+    if (m % i !== 0) {
+      m += max;
+      i = max;
+    }
+  }
+  return m;
+}
+
+smallestCommons([1, 5]);
+
+// Drop it
+// Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+// Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
+
+function dropElements(arr, func) {
+  while (arr.length > 0 && func(arr[0]) !== true) {
+    arr.shift();
+  }
+  return arr;
+}
+
+dropElements([1, 2, 3], function(n) {
+  return n < 3;
+});
