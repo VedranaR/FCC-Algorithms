@@ -47,7 +47,9 @@ function factorialize(num) {
 
 factorialize(5);
 
-////////////////////
+// Find the Longest Word in a String
+// Return the length of the longest word in the provided sentence.
+// Your response should be a number.
 
 function findLongestWordLength(str) {
   let arr = str.split(" ").map(w => w.length);
@@ -60,7 +62,9 @@ function findLongestWordLength(str) {
 
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
 
-/////////////////////
+// Return Largest Numbers in Arrays
+// Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
+// Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i].
 
 function largestOfFour(arr) {
   arr.map(subArr =>
@@ -83,9 +87,10 @@ largestOfFour([
   [1000, 1001, 857, 1]
 ]);
 
-///////////////////
-//Basic Algorithm Scripting: Confirm the Ending
-////////////////
+// Confirm the Ending
+// Check if a string (first argument, str) ends with the given target string (second argument, target).
+// This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose
+// of this challenge, we would like you to use one of the JavaScript substring methods instead.
 
 function confirmEnding(str, target) {
   let n = target.length;
@@ -94,8 +99,8 @@ function confirmEnding(str, target) {
 
 confirmEnding("Bastian", "n");
 
-//Repeat a String Repeat a String
-//////////////////////
+// Repeat a String Repeat a String
+// Repeat a given string str (first argument) for num times (second argument). Return an empty string if num is not a positive number.
 
 function repeatStringNumTimes(str, num) {
   let repeat = "";
@@ -109,8 +114,8 @@ function repeatStringNumTimes(str, num) {
 
 repeatStringNumTimes("abc", 3);
 
-//Truncate a String
-/////////////////
+// Truncate a String
+// Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
 
 function truncateString(str, num) {
   let cut;
@@ -124,8 +129,9 @@ function truncateString(str, num) {
 
 truncateString("A-tisket a-tasket A green and yellow basket", 8);
 
-//Finders Keepers
-///////////////
+// Finders Keepers
+// Create a function that looks through an array (first argument) and returns the first element in the array that passes a
+//truth test (second argument). If no element passes the test, return undefined.
 
 function findElement(arr, func) {
   let test = arr.map(func);
@@ -135,8 +141,8 @@ function findElement(arr, func) {
 
 findElement([1, 2, 3, 4], num => num % 2 === 0);
 
-//Boo who
-/////////////
+// Boo who
+// Check if a value is classified as a boolean primitive. Return true or false.
 
 function booWho(bool) {
   return bool === true || bool === false ? true : false;
@@ -144,8 +150,9 @@ function booWho(bool) {
 
 booWho(null);
 
-//Title Case a Sentence
-/////////////////////
+// Title Case a Sentence
+// Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+// For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
 
 function titleCase(str) {
   let arr = str.toLowerCase().split(" ");
@@ -157,8 +164,11 @@ function titleCase(str) {
 
 titleCase("I'm a little tea pot");
 
-//Slice and Splice
-////////////////
+// Slice and Splice
+// You are given two arrays and an index.
+// Use the array methods slice and splice to copy each element of the first array into the second array, in order.
+// Begin inserting elements at index n of the second array.
+// Return the resulting array. The input arrays should remain the same after the function runs.
 
 function frankenSplice(arr1, arr2, n) {
   let res = arr2.slice();
@@ -172,8 +182,10 @@ function frankenSplice(arr1, arr2, n) {
 
 frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
-//Falsy Bouncer
-////////////////////
+// Where do I Belong
+// Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+// For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+// Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
 
 function bouncer(arr) {
   arr = arr.filter(Boolean);
@@ -182,8 +194,10 @@ function bouncer(arr) {
 
 bouncer([7, "ate", "", false, 9]);
 
-//Where do I Belong
-/////////////////
+// Where do I Belong
+// Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+// For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+// Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
 
 function getIndexToIns(arr, num) {
   arr.push(num);
@@ -195,8 +209,11 @@ function getIndexToIns(arr, num) {
 
 getIndexToIns([40, 60], 50);
 
-//Mutations
-//////////////
+// Mutations
+// Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+// For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+// The arguments ["hello", "hey"] should return false because the string "hello" does not contain a "y".
+// Lastly, ["Alien", "line"], should return true because all of the letters in "line" are present in "Alien".
 
 function mutation(arr) {
   let item1 = arr[0].toLowerCase();
@@ -206,3 +223,6 @@ function mutation(arr) {
 }
 
 mutation(["hello", "hey"]);
+
+// Chunky Monkey
+// Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
